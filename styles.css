@@ -227,3 +227,60 @@ html, body {
 .nav-links a:hover {
   color: #f0c040;
 }
+
+
+#featured-product {
+  background: radial-gradient(circle at center, #f0f0f0 0%, #ddd 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.featured-content {
+  text-align: center;
+}
+
+.product-wrapper {
+  position: relative;
+  width: 60vw;
+  height: 70vh;
+  max-width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured-product {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.2));
+}
+
+.featured-product.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
+
