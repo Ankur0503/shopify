@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay,
+.split-container {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.section.active .overlay,
+.section.active .split-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#section1 {
+  background-image: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1920&q=80');
+}
+
+#section2 {
+  background-color: #f8f4f4;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #f8f4f4;
+}
+
+.overlay p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #f8f4f4;
+}
+
+.split-container {
+  margin-top: 30vh;
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.split {
+  flex: 1 1 350px;
+  max-width: 40%;
+  height: auto;
+  max-height: 75vh;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .split {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .split {
+    max-width: 95vw;
+    height: 70vh;
+  }
+}
+
+.split img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.split .text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.split:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
+
+.split:hover img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .split-container {
+    gap: 3vw;
+  }
+  .split {
+    height: 50vh;
+  }
+  .split .text-overlay {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .split-container {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 20vh;
+  }
+  .split {
+    max-width: 90vw;
+    height: 40vh;
+  }
+  .split .text-overlay {
+    font-size: 1.1rem;
+    bottom: 10px;
+    left: 10px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.split:hover .text-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f0c040;
+}
